@@ -25,3 +25,15 @@
     height: inherit;
   }
 }
+.list {
+  display: flex;
+  .title {
+    font-size: 30px;
+    color: red;
+    margin: 20px;
+  }
+  .img {
+    margin: 10px;
+    border: 1px solid black;
+  }
+}

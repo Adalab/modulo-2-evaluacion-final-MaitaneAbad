@@ -4,12 +4,31 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="https://img.icons8.com/clouds/100/000000/retro-tv.png"
+    />
     <link rel="stylesheet" href="./assets/css/main.css" />
-    <title></title>
+    <title>El google de las series de TV by Maitane</title>
   </head>
 
-  <body>
+  <body class="body">
+    <header>
+      <h1 class="title">Buscador de series de <span>tv</span></h1>
+    </header>
     <main class="main">
+      <form class="form">
+        <input
+          class="input js-inputSearch"
+          type="text"
+          name="searchSeries"
+          id="searchSeries"
+          placeholder="Ej: El señor de los anillos, la serie... "
+        />
+        <input class="search js-inputBtnSearch" type="button" value="Buscar" />
+        <input class="reset js-inputBtnReset" type="button" value="Reset" />
+      </form>
+      <ul class="list js-seriesList"></ul>
     </main>
     <script src="./assets/js/main.js"></script>
   </body>
