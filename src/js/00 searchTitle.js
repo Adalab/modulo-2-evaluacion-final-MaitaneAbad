@@ -78,6 +78,7 @@ function paintFavouriteSeries() {
       favoriteList.innerHTML += favShowSeries;
     }
   }
+  console.log(favorite);
 }
 
 // funcion para buscar el id series encontradas y poder meterlas en un array cuando las queramos pponer en favoritas
@@ -101,10 +102,12 @@ function handleSeries(ev) {
   setLocalStorage();
 }
 // funcion general de busqueda de series
-function handleClickSearch() {
+function handleClickSearch(ev) {
+  ev.preventDefault;
   getAPI();
   searchSeries();
 }
+// La tecla enter
 // funcion Manejadora del reset reset
 function handleClickReset(ev) {
   ev.preventDefault();
@@ -149,4 +152,4 @@ getLocalStorage();
 
 inputBtnSearch.addEventListener('click', handleClickSearch);
 inputBtnReset.addEventListener('click', handleClickReset);
-buttonResetListFav.addEventListener('click', handleResetButtonFavList);
+//buttonResetListFav.addEventListener('click', handleResetButtonFavList);
