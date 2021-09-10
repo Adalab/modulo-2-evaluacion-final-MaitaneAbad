@@ -69,11 +69,11 @@ function paintFavouriteSeries() {
     const imgIsNullURL =
       'https://via.placeholder.com/210x295/ffffff/666666/?text=TV%27';
     if (imgIsNull === null) {
-      const favShowSeries = `<li class="cover " id=${id}><section class="seriesSectionFav"><h2 class="titleSeriesFav">${title}</h2><img class="img js-seriesImg" src=${imgIsNullURL} alt${title}><input type="button" class="btnImgList js-ButtonResetFav" value='X'></section></li>`;
+      const favShowSeries = `<li class="cover " id=${id}><section class="seriesSectionFav"><h2 class="titleSeriesFav">${title}</h2><img class="imgFav js-seriesImg" src=${imgIsNullURL} alt${title}><input type="button" class="btnImgList js-ButtonResetFav" value='X'></section></li>`;
       favoriteList.innerHTML += favShowSeries;
     } else {
       const img = seriesData.show.image.medium;
-      const favShowSeries = `<li class="cover " id=${id}><section class="seriesSectionFav"><h2 class="titleSeriesFav">${title}</h2><img class="img js-seriesImg" src=${img} alt${title}><input type="button" class="btnImgList " value='X'></section></li>`;
+      const favShowSeries = `<li class="cover " id=${id}><section class="seriesSectionFav"><h2 class="titleSeriesFav">${title}</h2><img class="imgFav js-seriesImg" src=${img} alt${title}><input type="button" class="btnImgList " value='X'></section></li>`;
       favoriteList.innerHTML += favShowSeries;
     }
   }

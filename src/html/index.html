@@ -9,60 +9,70 @@
       href="https://img.icons8.com/clouds/100/000000/retro-tv.png"
     />
     <link rel="stylesheet" href="./assets/css/main.css" />
-    <title>El google de las series de TV by Maitane</title>
+    <title>The serienator</title>
   </head>
 
-  <body class="body">
-    <header>
+  <body class="Body">
+    <header class="header">
       <h1 class="title">
         <img
-          class="imgTitle"
+          class="imgTv"
           src="https://img.icons8.com/clouds/100/000000/tv.png"
         />
         <img
-          class="imgTitle"
+          class="imgBender"
           src="https://img.icons8.com/dusk/64/000000/futurama-bender--v2.png"
         />
-        Buscador de series de <span>tv </span>
+        Serienator
         <img
-          class="imgTitle"
+          class="imgTv"
           src="https://img.icons8.com/dusk/64/000000/futurama-bender--v2.png"
         />
         <img
-          class="imgTitle"
+          class="imgBender"
           src="https://img.icons8.com/clouds/100/000000/tv.png"
         />
       </h1>
     </header>
     <main class="main">
-      <section>
+      <section class="sectionForm">
         <form class="form" id="myForm">
           <input
             class="input js-inputSearch"
             type="text"
-            name="searchSeries"
-            id="enter"
             placeholder="Ej: Star Trek... "
           />
           <input
-            class="search js-inputBtnSearch"
+            class="ButtonSearch js-inputBtnSearch"
             type="button"
             value="Buscar"
           />
-          <input class="reset js-inputBtnReset" type="button" value="Reset" />
+          <input
+            class="ButtonReset js-inputBtnReset"
+            type="button"
+            value="Reset"
+          />
         </form>
       </section>
-      <section class="sectionTwo js-sectionSeries">
-        <article class="articleCover">
-          <h2 class="series">Series</h2>
-          <ul class="list js-seriesList"></ul>
+      <section class="sectionSeries js-sectionSeries">
+        <article class="seriesFavorites">
+          <h2 class="subtitleFav">Series favoritas</h2>
+          <ul class="listFav js-seriesFavourite listFav"></ul>
         </article>
-        <article class="favorite">
-          <h2 class="fav">Series favoritas</h2>
-          <ul class="js-seriesFavourite listFav"></ul>
+        <article class="seriesSearch">
+          <h2 class="subtitleSeries">Series</h2>
+          <ul class="listSeries js-seriesList"></ul>
         </article>
       </section>
     </main>
+    <footer class="footer">
+      <p class="copyright">
+        &copyMaitane<img
+          class="imgCopyright"
+          src="https://img.icons8.com/nolan/64/m.png"
+        />
+      </p>
+    </footer>
     <script src="./assets/js/main.js"></script>
   </body>
 </html>
