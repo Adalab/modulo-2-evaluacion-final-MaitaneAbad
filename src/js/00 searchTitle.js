@@ -10,7 +10,6 @@ const seriesListHTML = document.querySelector('.js-seriesList');
 //Traigo la sección donde se mostrara las series fav
 const favoriteList = document.querySelector('.js-seriesFavourite');
 // Boton Reset mini de la lista de fav
-const buttonResetListFav = document.querySelector('.js-ButtonResetFav');
 //Array donde guardaré las series buscadas
 let show = [];
 let favorite = [];
@@ -115,8 +114,7 @@ function handleClickReset(ev) {
   paintFavouriteSeries();
 }
 // Funcion Manejadora Reset Mini
-function handleResetButtonFavList(ev) {
-  ev.preventDefault();
+/*function handleResetButtonFavList(ev) {
   const clickSerie = parseInt(ev.currentTarget.id);
   // busco la serie en el array de busqueda de series
   const objectClick = show.find((serie) => {
@@ -131,7 +129,7 @@ function handleResetButtonFavList(ev) {
   } else {
     favorite.splice(favoriteSeries, 1);
   }
-}
+}*/
 // LocalStorage
 function setLocalStorage() {
   const stringFavSeries = JSON.stringify(favorite);
