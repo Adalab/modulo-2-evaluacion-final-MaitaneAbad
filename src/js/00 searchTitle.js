@@ -85,8 +85,7 @@ function paintFavouriteSeries() {
           <h2 class="titleSeriesFav">${title}</h2>
           <img class="imgFav  js-seriesImg" src=${imgIsNullURL} alt${title}>
           <form class=""js-formFavReset">
-          <input type="button" class="buttonResetFav js-ButtonResetFav" value='X'>
-          </form>
+          <input type="button" class="buttonResetFav js-ButtonResetFav" value='X'></form>
         </div>
       </li>`;
       favoriteList.innerHTML += favShowSeries;
