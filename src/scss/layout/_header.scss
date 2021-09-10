@@ -1,9 +1,12 @@
-.title {
-  text-align: center;
-  font-size: 4vw;
-  color: #ae0001;
-  font-weight: bold;
-  .imgTitle {
-    width: 5vw;
+.header {
+  .title {
+    text-align: center;
+    font-size: 4vw;
+    color: #ae0001;
+    font-weight: 900;
+  }
+
+  .imgHeader {
+    width: 10%;
   }
 }
