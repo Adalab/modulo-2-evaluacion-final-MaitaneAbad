@@ -56,7 +56,6 @@ function textListHTML() {
         </li>`;
       seriesListHTML.innerHTML += htmlSeries;
     }
-    inputSearch.reset();
   }
   listenLiSeries();
 }
@@ -70,6 +69,7 @@ function listenLiSeries() {
 // funcion que pinta las series favoritas en la columna de series favoritas
 function paintFavouriteSeries() {
   favoriteList.innerHTML = '';
+
   for (const seriesData of favorite) {
     const title = seriesData.show.name;
     const imgIsNull = seriesData.show.image;
@@ -82,7 +82,8 @@ function paintFavouriteSeries() {
           <h2 class="titleSeriesFav">${title}</h2>
           <img class="imgFav  js-seriesImg" src=${imgIsNullURL} alt${title}>
           <form class=""js-formFavReset">
-          <input type="button" class="buttonResetFav js-ButtonResetFav" value='X'></form>
+          <input type="button" class="buttonResetFav js-ButtonResetFav" value='X'>
+          </form>
         </div>
       </li>`;
       favoriteList.innerHTML += favShowSeries;
@@ -130,7 +131,8 @@ function handleClickSearch(ev) {
 }
 // La tecla enter
 // funcion Manejadora del reset reset
-function handleClickReset() {
+function handleClickReset(ev) {
+  ev.preventDefault();
   favorite = [];
   paintFavouriteSeries();
 }
