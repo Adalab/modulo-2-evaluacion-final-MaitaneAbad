@@ -120,6 +120,7 @@ function handleSeries(ev) {
   } else {
     favorite.splice(favoriteSeries, 1);
   }
+  ev.currentTarget.classList.toggle('seriesDivClick');
   paintFavouriteSeries();
   setLocalStorage();
 }
