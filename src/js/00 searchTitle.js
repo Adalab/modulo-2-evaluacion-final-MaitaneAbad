@@ -58,6 +58,7 @@ function textListHTML() {
         </li>`;
       seriesListHTML.innerHTML += htmlSeries;
     }
+    inputSearch.reset();
   }
   listenLiSeries();
 }
@@ -72,7 +73,6 @@ function listenLiSeries() {
 // funcion que pinta las series favoritas en la columna de series favoritas
 function paintFavouriteSeries() {
   favoriteList.innerHTML = '';
-
   for (const seriesData of favorite) {
     const title = seriesData.show.name;
     const imgIsNull = seriesData.show.image;
@@ -134,8 +134,7 @@ function handleClickSearch(ev) {
 }
 // La tecla enter
 // funcion Manejadora del reset reset
-function handleClickReset(ev) {
-  ev.preventDefault();
+function handleClickReset() {
   favorite = [];
   paintFavouriteSeries();
 }

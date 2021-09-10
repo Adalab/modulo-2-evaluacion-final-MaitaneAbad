@@ -2,19 +2,20 @@
   .sectionForm {
     text-align: center;
     .form {
+      height: 15vh;
       margin: 8vh 0;
       .input {
         padding: 0 0 0 10px;
         font-size: 1.25em;
-        width: 70vw;
+        width: 50vw;
       }
       .buttonSearch {
-        margin: 3vh 3vw 0 3vw;
+        margin: 3vh 1.5vw 0 3vw;
         text-transform: uppercase;
         padding: 5px 10px;
         box-sizing: border-box;
         font-size: 1.2em;
-        width: 30vw;
+        width: 10vw;
         height: 3.5vh;
         box-sizing: content-box;
         color: #d3a625;
@@ -27,12 +28,12 @@
         }
       }
       .buttonReset {
-        margin: 3vh 3vw;
+        margin: 3vh 1.5vw;
         text-transform: uppercase;
         padding: 5px 10px;
         box-sizing: border-box;
         font-size: 1.2em;
-        width: 30vw;
+        width: 10vw;
         height: 3.5vh;
         box-sizing: content-box;
         color: #ae0001;
