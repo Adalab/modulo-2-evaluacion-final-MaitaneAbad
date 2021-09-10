@@ -35,18 +35,32 @@
       </h1>
     </header>
     <main class="main">
-      <form class="form">
-        <input
-          class="input js-inputSearch"
-          type="text"
-          name="searchSeries"
-          id="searchSeries"
-          placeholder="Ej: The big bang theory... "
-        />
-        <input class="search js-inputBtnSearch" type="button" value="Buscar" />
-        <input class="reset js-inputBtnReset" type="button" value="Reset" />
-      </form>
-      <ul class="list js-seriesList"></ul>
+      <section>
+        <form class="form">
+          <input
+            class="input js-inputSearch"
+            type="text"
+            name="searchSeries"
+            id="searchSeries"
+            placeholder="Ej: The big bang theory... "
+          />
+          <input
+            class="search js-inputBtnSearch"
+            type="button"
+            value="Buscar"
+          />
+          <input class="reset js-inputBtnReset" type="button" value="Reset" />
+        </form>
+      </section>
+      <section class="sectionTwo">
+        <article class="articleCover">
+          <ul class="list js-seriesList"></ul>
+        </article>
+        <article class="favourite">
+          <h2>Series favoritas</h2>
+          <!--Para cuando seleccionemos las series fav. se coloquen en otro lado-->
+        </article>
+      </section>
     </main>
     <script src="./assets/js/main.js"></script>
   </body>
