@@ -9,6 +9,8 @@ const inputBtnReset = document.querySelector('.js-inputBtnReset');
 const seriesListHTML = document.querySelector('.js-seriesList');
 //Traigo la sección donde se mostrara las series fav
 const favoriteList = document.querySelector('.js-seriesFavourite');
+// Boton Reset mini de la lista de fav
+const buttonResetListFav = document.querySelector('.js-ButtonResetFav');
 //Array donde guardaré las series buscadas
 let show = [];
 let favorite = [];
@@ -68,11 +70,11 @@ function paintFavouriteSeries() {
     const imgIsNullURL =
       'https://via.placeholder.com/210x295/ffffff/666666/?text=TV%27';
     if (imgIsNull === null) {
-      const favShowSeries = `<li class="cover " id=${id}><section class="seriesSectionFav"><h2 class="titleSeriesFav">${title}</h2><img class="img js-seriesImg" src=${imgIsNullURL} alt${title}></section></li>`;
+      const favShowSeries = `<li class="cover " id=${id}><section class="seriesSectionFav"><h2 class="titleSeriesFav">${title}</h2><img class="img js-seriesImg" src=${imgIsNullURL} alt${title}><input type="button" class="btnImgList" value='X'></section></li>`;
       favoriteList.innerHTML += favShowSeries;
     } else {
       const img = seriesData.show.image.medium;
-      const favShowSeries = `<li class="cover " id=${id}><section class="seriesSectionFav"><h2 class="titleSeriesFav">${title}</h2><img class="img js-seriesImg" src=${img} alt${title}></section></li>`;
+      const favShowSeries = `<li class="cover " id=${id}><section class="seriesSectionFav"><h2 class="titleSeriesFav">${title}</h2><img class="img js-seriesImg" src=${img} alt${title}><input type="button" class="btnImgList js-ButtonResetFav" value='X'></section></li>`;
       favoriteList.innerHTML += favShowSeries;
     }
   }
@@ -109,13 +111,17 @@ function handleClickReset(ev) {
   favorite = [];
   paintFavouriteSeries();
 }
+// Funcion Manejadora Reset Mini
+function handleResetButtonFavList(ev) {
+  ev.preventDefault();
+}
 // LocalStorage
 function setLocalStorage() {
   const stringFavSeries = JSON.stringify(favorite);
-  localStorage.setItem('favorites', stringFavSeries);
+  localStorage.setItem('favorite', stringFavSeries);
 }
 function getLocalStorage() {
-  let getLocalSeriesFav = localStorage.getItem(favorite);
+  let getLocalSeriesFav = localStorage.getItem('favorite');
   if (getLocalSeriesFav === null) {
     handleClickSearch();
   } else {
@@ -129,3 +135,4 @@ getLocalStorage();
 
 inputBtnSearch.addEventListener('click', handleClickSearch);
 inputBtnReset.addEventListener('click', handleClickReset);
+buttonResetListFav.addEventListener('click', handleResetButtonFavList);
