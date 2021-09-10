@@ -5,10 +5,10 @@ const inputSearch = document.querySelector('.js-inputSearch');
 const inputBtnSearch = document.querySelector('.js-inputBtnSearch');
 // Donde pintar mis series en el HTML
 const seriesListHTML = document.querySelector('.js-seriesList');
-//Traigo la sección donde se mostrara las series
+//Traigo la sección donde se mostrara las series fav
+const favoriteList = document.querySelector('.js-seriesFavourite');
 //Array donde guardaré las series buscadas
-let data = [];
-
+let show = [];
 let favorite = [];
 
 //Función donde recojo la url más lo que busco en el input
@@ -24,14 +24,14 @@ function searchSeries() {
   fetch(api)
     .then((response) => response.json())
     .then((dataApi) => {
-      data = dataApi;
-      console.log(data);
+      show = dataApi;
+      console.log(show);
       textListHTML();
     });
 }
 function textListHTML() {
   seriesListHTML.innerHTML = '';
-  for (const seriesData of data) {
+  for (const seriesData of show) {
     const title = seriesData.show.name;
     const imgIsNull = seriesData.show.image;
     const id = seriesData.show.id;
@@ -54,30 +54,33 @@ function listenLiSeries() {
     series.addEventListener('click', handleSeries);
   }
 }
-function isFavSeries(data) {
-  const favoriteSerie = favorite.find((fav) => {
-    return fav.id === data.id;
-  });
-  //si está o no está en favoritos
-  if (favoriteSerie === undefined) {
-    //false cuando NO está favoritos
-    return false;
-  } else {
-    //true cuando SI está favoritos
-    return true;
+function paintFavouriteSeries() {
+  favoriteList.innerHTML = '';
+  for (const seriesData of favorite) {
+    const title = seriesData.show.name;
+    const imgIsNull = seriesData.show.image;
+    const id = seriesData.show.id;
+    const imgIsNullURL =
+      'https://via.placeholder.com/210x295/ffffff/666666/?text=TV%27';
+    if (imgIsNull === null) {
+      const favShowSeries = `<li class="cover " id=${id}><section class="seriesSection"><h2 class="titleSeries">${title}</h2><img class="img js-seriesImg" src=${imgIsNullURL} alt${title}></section></li>`;
+      favoriteList.innerHTML += favShowSeries;
+    } else {
+      const img = seriesData.show.image.medium;
+      const favShowSeries = `<li class="cover " id=${id}><section class="seriesSection"><h2 class="titleSeries">${title}</h2><img class="img js-seriesImg" src=${img} alt${title}></section></li>`;
+      favoriteList.innerHTML += favShowSeries;
+    }
   }
 }
-isFavSeries();
 function handleSeries(ev) {
-  //debugger;
   //obtengo id de la serie
-  const clickSerie = ev.currentTarget.id;
+  const clickSerie = parseInt(ev.currentTarget.id);
   // busco la serie en el array de busqueda de series
-  const objectClick = data.find((serie) => {
-    return serie.id === clickSerie;
+  const objectClick = show.find((serie) => {
+    return serie.show.id === clickSerie;
   });
   const favoriteSeries = favorite.findIndex((favorite) => {
-    return favorite.id === clickSerie;
+    return favorite.show.id === clickSerie;
   });
   // si la serie no está en fav, me devuelve -1
   if (favoriteSeries === -1) {
@@ -85,6 +88,7 @@ function handleSeries(ev) {
   } else {
     favorite.splice(favoriteSeries, 1);
   }
+  paintFavouriteSeries();
 }
 
 function handleClickSearch(ev) {
