@@ -63,11 +63,11 @@ function paintFavouriteSeries() {
     const imgIsNullURL =
       'https://via.placeholder.com/210x295/ffffff/666666/?text=TV%27';
     if (imgIsNull === null) {
-      const favShowSeries = `<li class="cover " id=${id}><section class="seriesSection"><h2 class="titleSeries">${title}</h2><img class="img js-seriesImg" src=${imgIsNullURL} alt${title}></section></li>`;
+      const favShowSeries = `<li class="cover " id=${id}><section class="seriesSectionFav"><h2 class="titleSeriesFav">${title}</h2><img class="img js-seriesImg" src=${imgIsNullURL} alt${title}></section></li>`;
       favoriteList.innerHTML += favShowSeries;
     } else {
       const img = seriesData.show.image.medium;
-      const favShowSeries = `<li class="cover " id=${id}><section class="seriesSection"><h2 class="titleSeries">${title}</h2><img class="img js-seriesImg" src=${img} alt${title}></section></li>`;
+      const favShowSeries = `<li class="cover " id=${id}><section class="seriesSectionFav"><h2 class="titleSeriesFav">${title}</h2><img class="img js-seriesImg" src=${img} alt${title}></section></li>`;
       favoriteList.innerHTML += favShowSeries;
     }
   }
