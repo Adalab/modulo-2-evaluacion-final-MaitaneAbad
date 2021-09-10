@@ -34,11 +34,11 @@ function textListHTML() {
     const imgIsNullURL =
       'https://via.placeholder.com/210x295/ffffff/666666/?text=TV%27';
     if (imgIsNull === null) {
-      const htmlSeries = `<li class="title js-seriesTitle"><h2>${title}</h2><img class="img js-seriesImg" src=${imgIsNullURL}></li>`;
+      const htmlSeries = `<li class="cover js-seriesTitle"><section class="seriesSection"><h2 class="titleSeries">${title}</h2><img class="img js-seriesImg" src=${imgIsNullURL} alt${title}></section></li>`;
       seriesListHTML.innerHTML += htmlSeries;
     } else {
       const img = seriesData.show.image.medium;
-      const htmlSeries = `<li class="title js-seriesTitle"><h2>${title}</h2><img class="img js-seriesImg" src=${img}></li>`;
+      const htmlSeries = `<li class="cover js-seriesTitle"><section class="seriesSection"><h2 class="titleSeries">${title}</h2><img class="img js-seriesImg" src=${img} alt${title}></section></li>`;
       seriesListHTML.innerHTML += htmlSeries;
     }
   }
