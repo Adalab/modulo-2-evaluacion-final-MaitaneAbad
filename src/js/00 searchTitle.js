@@ -3,6 +3,8 @@
 const inputSearch = document.querySelector('.js-inputSearch');
 // botón del HTML
 const inputBtnSearch = document.querySelector('.js-inputBtnSearch');
+//botón reset HTML
+const inputBtnReset = document.querySelector('.js-inputBtnReset');
 // Donde pintar mis series en el HTML
 const seriesListHTML = document.querySelector('.js-seriesList');
 //Traigo la sección donde se mostrara las series fav
@@ -18,7 +20,7 @@ function getAPI() {
   return api;
 }
 
-// función donde recojo lo que me devuelve la API y quiero pintar
+// función donde recojo lo que me devuelve la API y quiero pintar las series encontradas
 function searchSeries() {
   let api = getAPI();
   fetch(api)
@@ -48,12 +50,15 @@ function textListHTML() {
   }
   listenLiSeries();
 }
+
+//Funcion coge todos los li de la lista y los escucha cuando hagamos click sobre la foto
 function listenLiSeries() {
   const listSeries = document.querySelectorAll('.js-seriesTitle');
   for (const series of listSeries) {
     series.addEventListener('click', handleSeries);
   }
 }
+// funcion que pinta las series favoritas en la columna de series favoritas
 function paintFavouriteSeries() {
   favoriteList.innerHTML = '';
   for (const seriesData of favorite) {
@@ -72,6 +77,8 @@ function paintFavouriteSeries() {
     }
   }
 }
+
+// funcion para buscar el id series encontradas y poder meterlas en un array cuando las queramos pponer en favoritas
 function handleSeries(ev) {
   //obtengo id de la serie
   const clickSerie = parseInt(ev.currentTarget.id);
@@ -89,12 +96,36 @@ function handleSeries(ev) {
     favorite.splice(favoriteSeries, 1);
   }
   paintFavouriteSeries();
+  setLocalStorage();
 }
-
-function handleClickSearch(ev) {
-  ev.preventDefault();
+// funcion general de busqueda de series
+function handleClickSearch() {
   getAPI();
   searchSeries();
 }
+// funcion Manejadora del reset reset
+function handleClickReset(ev) {
+  ev.preventDefault();
+  favorite = [];
+  paintFavouriteSeries();
+}
+// LocalStorage
+function setLocalStorage() {
+  const stringFavSeries = JSON.stringify(favorite);
+  localStorage.setItem('favorites', stringFavSeries);
+}
+function getLocalStorage() {
+  let getLocalSeriesFav = localStorage.getItem(favorite);
+  if (getLocalSeriesFav === null) {
+    handleClickSearch();
+  } else {
+    const arrayFav = JSON.parse(getLocalSeriesFav);
+    favorite = arrayFav;
+    paintFavouriteSeries();
+  }
+}
+//para que cuando recargue la pagina esté a 0
+getLocalStorage();
 
 inputBtnSearch.addEventListener('click', handleClickSearch);
+inputBtnReset.addEventListener('click', handleClickReset);
