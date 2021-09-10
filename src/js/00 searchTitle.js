@@ -13,14 +13,12 @@ const favoriteList = document.querySelector('.js-seriesFavourite');
 //Array donde guardaré las series buscadas
 let show = [];
 let favorite = [];
-
 //Función donde recojo la url más lo que busco en el input
 function getAPI() {
   let user = inputSearch.value;
   let api = '//api.tvmaze.com/search/shows?q=' + user;
   return api;
 }
-
 // función donde recojo lo que me devuelve la API y quiero pintar las series encontradas
 function searchSeries() {
   let api = getAPI();
@@ -62,7 +60,6 @@ function textListHTML() {
   }
   listenLiSeries();
 }
-
 //Funcion coge todos los li de la lista y los escucha cuando hagamos click sobre la foto
 function listenLiSeries() {
   const listSeries = document.querySelectorAll('.js-seriesTitle');
@@ -105,7 +102,6 @@ function paintFavouriteSeries() {
   }
   console.log(favorite);
 }
-
 // funcion para buscar el id series encontradas y poder meterlas en un array cuando las queramos pponer en favoritas
 function handleSeries(ev) {
   //obtengo id de la serie
