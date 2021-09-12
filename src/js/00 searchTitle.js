@@ -100,7 +100,6 @@ function handleSeries(ev) {
 // funcion que pinta las series favoritas en la columna de series favoritas
 function paintFavouriteSeries() {
   favoriteList.innerHTML = '';
-
   for (const seriesData of favorite) {
     const title = seriesData.show.name;
     const imgIsNull = seriesData.show.image;
@@ -135,8 +134,7 @@ function paintFavouriteSeries() {
 }
 
 // funcion general de busqueda de series
-function handleClickSearch(ev) {
-  ev.preventDefault;
+function handleClickSearch() {
   searchSeries();
 }
 // La tecla enter
@@ -148,24 +146,6 @@ function handleClickReset(ev) {
   paintFavouriteSeries();
   setLocalStorage();
 }
-
-// Funcion Manejadora Reset Mini
-/*function handleResetButtonFavList(ev) {
-  const clickSerie = parseInt(ev.currentTarget.id);
-  // busco la serie en el array de busqueda de series
-  const objectClick = show.find((serie) => {
-    return serie.show.id === clickSerie;
-  });
-  const favoriteSeries = favorite.findIndex((favorite) => {
-    return favorite.show.id === clickSerie;
-  });
-  // si la serie no está en fav, me devuelve -1
-  if (favoriteSeries === -1) {
-    favorite.push(objectClick);
-  } else {
-    favorite.splice(favoriteSeries, 1);
-  }
-}*/
 
 // Añadimos info al LocalStorage
 function setLocalStorage() {
