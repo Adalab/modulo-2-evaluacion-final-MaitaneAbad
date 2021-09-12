@@ -13,12 +13,14 @@ const favoriteList = document.querySelector('.js-seriesFavourite');
 //Array donde guardaré las series buscadas
 let show = [];
 let favorite = [];
+
 //Función donde recojo la url más lo que busco en el input
 function getAPI() {
   let user = inputSearch.value;
   let api = '//api.tvmaze.com/search/shows?q=' + user;
   return api;
 }
+
 // función donde recojo lo que me devuelve la API y quiero pintar las series encontradas
 function searchSeries() {
   let api = getAPI();
@@ -26,11 +28,18 @@ function searchSeries() {
     .then((response) => response.json())
     .then((dataApi) => {
       show = dataApi;
-      console.log(show);
-      textListHTML();
+      handleFilter();
     });
 }
-function textListHTML() {
+
+// lo que buscamos
+function handleFilter() {
+  paintListSeries();
+}
+inputSearch.addEventListener('keyUp', handleFilter);
+
+//Funcion que pinta las series buscadas cuando se cambia el input
+function paintListSeries() {
   seriesListHTML.innerHTML = '';
   for (const seriesData of show) {
     const title = seriesData.show.name;
@@ -59,12 +68,33 @@ function textListHTML() {
   }
   listenLiSeries();
 }
+
 //Funcion coge todos los li de la lista y los escucha cuando hagamos click sobre la foto
 function listenLiSeries() {
   const listSeries = document.querySelectorAll('.js-seriesTitle');
   for (const series of listSeries) {
     series.addEventListener('click', handleSeries);
   }
+}
+// funcion para buscar el id series encontradas y poder meterlas en un array cuando las queramos poner en favoritas
+function handleSeries(ev) {
+  //obtengo id de la serie
+  const clickSerie = parseInt(ev.currentTarget.id);
+  // busco la serie en el array de busqueda de series
+  const objectClick = show.find((serie) => {
+    return serie.show.id === clickSerie;
+  });
+  const favoriteSeries = favorite.findIndex((favorite) => {
+    return favorite.show.id === clickSerie;
+  });
+  // si la serie no está en fav, me devuelve -1
+  if (favoriteSeries === -1) {
+    favorite.push(objectClick);
+  } else {
+    favorite.splice(favoriteSeries, 1);
+  }
+  ev.currentTarget.classList.toggle('seriesDivClick');
+  paintFavouriteSeries();
 }
 // funcion que pinta las series favoritas en la columna de series favoritas
 function paintFavouriteSeries() {
@@ -101,42 +131,23 @@ function paintFavouriteSeries() {
       favoriteList.innerHTML += favShowSeries;
     }
   }
-  console.log(favorite);
 }
-// funcion para buscar el id series encontradas y poder meterlas en un array cuando las queramos pponer en favoritas
-function handleSeries(ev) {
-  //obtengo id de la serie
-  const clickSerie = parseInt(ev.currentTarget.id);
-  // busco la serie en el array de busqueda de series
-  const objectClick = show.find((serie) => {
-    return serie.show.id === clickSerie;
-  });
-  const favoriteSeries = favorite.findIndex((favorite) => {
-    return favorite.show.id === clickSerie;
-  });
-  // si la serie no está en fav, me devuelve -1
-  if (favoriteSeries === -1) {
-    favorite.push(objectClick);
-  } else {
-    favorite.splice(favoriteSeries, 1);
-  }
-  ev.currentTarget.classList.toggle('seriesDivClick');
-  paintFavouriteSeries();
-  setLocalStorage();
-}
+
 // funcion general de busqueda de series
 function handleClickSearch(ev) {
   ev.preventDefault;
-  getAPI();
   searchSeries();
+  setLocalStorage();
 }
 // La tecla enter
+
 // funcion Manejadora del reset reset
 function handleClickReset(ev) {
   ev.preventDefault();
   favorite = [];
   paintFavouriteSeries();
 }
+
 // Funcion Manejadora Reset Mini
 /*function handleResetButtonFavList(ev) {
   const clickSerie = parseInt(ev.currentTarget.id);
@@ -154,13 +165,18 @@ function handleClickReset(ev) {
     favorite.splice(favoriteSeries, 1);
   }
 }*/
-// LocalStorage
+
+// Añadimos info al LocalStorage
 function setLocalStorage() {
   const stringFavSeries = JSON.stringify(favorite);
   localStorage.setItem('favorite', stringFavSeries);
 }
+
+//Buscamos info en el LocalStorage y si la hay
 function getLocalStorage() {
+  // obtengo lo que hay en el LocalStorage
   let getLocalSeriesFav = localStorage.getItem('favorite');
+  // miramos si son validos los datos
   if (getLocalSeriesFav === null) {
     handleClickSearch();
   } else {
@@ -169,7 +185,7 @@ function getLocalStorage() {
     paintFavouriteSeries();
   }
 }
-//para que cuando recargue la pagina esté a 0
+//para que cuando recargue la pagina esté a -1
 getLocalStorage();
 
 inputBtnSearch.addEventListener('click', handleClickSearch);
