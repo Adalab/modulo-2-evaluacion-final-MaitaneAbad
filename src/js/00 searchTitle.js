@@ -28,7 +28,7 @@ function searchSeries() {
     .then((response) => response.json())
     .then((dataApi) => {
       show = dataApi;
-      handleFilter();
+      paintListSeries();
     });
 }
 
@@ -95,6 +95,7 @@ function handleSeries(ev) {
   }
   ev.currentTarget.classList.toggle('seriesDivClick');
   paintFavouriteSeries();
+  setLocalStorage();
 }
 // funcion que pinta las series favoritas en la columna de series favoritas
 function paintFavouriteSeries() {
@@ -137,15 +138,15 @@ function paintFavouriteSeries() {
 function handleClickSearch(ev) {
   ev.preventDefault;
   searchSeries();
-  setLocalStorage();
 }
 // La tecla enter
 
-// funcion Manejadora del reset reset
+// funcion Manejadora del reset
 function handleClickReset(ev) {
   ev.preventDefault();
   favorite = [];
   paintFavouriteSeries();
+  setLocalStorage();
 }
 
 // Funcion Manejadora Reset Mini
