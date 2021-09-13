@@ -119,8 +119,7 @@
       }
     }
     .seriesSearch {
-      width: 60%;
-      //box-shadow: 0 0 10px rgba(199, 78, 78, 0.7);
+      width: 65%;
 
       .subtitleSeries {
         text-align: center;
@@ -132,7 +131,7 @@
       .listSeries {
         .elementListSeries {
           .seriesDiv {
-            padding: 10px 0 2px 0;
+            padding: 10px 0 20px 0;
             margin-bottom: 10px;
             .titleSeries {
               text-align: center;
@@ -143,10 +142,11 @@
             .img {
               margin: 10px auto;
               display: block;
-              width: 30%;
+              width: 50%;
               margin: 10px auto 10px auto;
               display: block;
               transition: color ease 0.8s;
+              border-radius: 30px;
               &:hover {
                 box-shadow: 0px 0px 10px 0px #c0c0c0;
               }
@@ -154,6 +154,7 @@
           }
         }
         .seriesDivClick {
+          border-radius: 50px;
           background-color: #ffc524;
           color: #141518;
           margin: 100px;
